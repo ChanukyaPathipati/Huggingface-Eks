@@ -46,31 +46,31 @@ project-root/
 * `/completion` POST: Accepts messages and returns model output
 * `/metrics` GET: Prometheus-compatible metrics
 
-### 🐳 2. Dockerized & Tested Locally
+### 2. Dockerized & Tested Locally
 
 * Built custom Docker image
 * Ran and validated via `curl` and `pytest`
 
-### ⚙️ 3. Helm Chart for Kubernetes
+### 3. Helm Chart for Kubernetes
 
 * Helm chart for FastAPI app (`my-webapp`)
 * Deployable to Minikube or AWS EKS
 * Supports NGINX ingress, resource configs, and autoscaling-ready
 
-### ☁️ 4. EKS Infrastructure with Terraform
+### 4. EKS Infrastructure with Terraform
 
 * VPC module using `terraform-aws-modules/vpc`
 * EKS cluster with managed ARM64 nodes (`t4g.small`)
 * Key pair auto-generated and uploaded to S3
 * NGINX ingress controller deployed with NLB
 
-### 📈 5. Monitoring Stack (Prometheus + Grafana)
+### 5. Monitoring Stack (Prometheus + Grafana)
 
 * Installed via Helm
 * `/metrics` endpoint scraped using `ServiceMonitor`
 * Exposed via AWS LoadBalancer
 
-### 🔐 6. CI/CD Pipeline (WIP)
+### 6. CI/CD Pipeline (WIP)
 
 * GitHub Actions configured:
 
@@ -108,11 +108,6 @@ docker push ...
 * Default Grafana login: `admin / admin`
 
 ---
-
-Would you like me to write the **“System Design Explanation” section** next, for the test submission?
-
-This will describe why you chose EKS, Terraform, Helm, etc., and how they work together ❤️🧠
-
 
 
 
