@@ -1,0 +1,8 @@
+
+# This file contains metadata about the Helm chart.
+
+apiVersion: v2
+name: my-webapp
+description: A Helm chart for my static web application
+version: 0.1.0
+appVersion: 1.0.0

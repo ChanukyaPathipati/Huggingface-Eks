@@ -1,0 +1,38 @@
+grafana:
+  service:
+    type: LoadBalancer
+    port: 80
+  adminPassword: "admin"
+
+  ingress:
+    enabled: false
+
+prometheus:
+  prometheusSpec:
+    serviceMonitorSelectorNilUsesHelmValues: false
+    podMonitorSelectorNilUsesHelmValues: false
+
+  service:
+    type: LoadBalancer
+    annotations:
+      service.beta.kubernetes.io/aws-load-balancer-type: "nlb"
+
+  ingress:
+    enabled: false
+
+serviceMonitor:
+  selfMonitor: true
+
+# Enable scraping your FastAPI app
+additionalServiceMonitors:
+  - name: fastapi-metrics
+    selector:
+      matchLabels:
+        app: my-webapp
+    namespaceSelector:
+      matchNames:
+        - default
+    endpoints:
+      - port: http
+        path: /metrics
+        interval: 15s
