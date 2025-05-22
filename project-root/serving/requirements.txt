@@ -1,0 +1,5 @@
+fastapi
+uvicorn
+transformers
+starlette_exporter
+torch  # <- this is the key one!

@@ -1,0 +1,48 @@
+# Ignore Python virtual environment
+venv/
+.env/
+.venv/
+
+# Python bytecode
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Editor config
+.vscode/
+.idea/
+
+# macOS system files
+.DS_Store
+
+# Logs
+*.log
+
+# Jupyter notebooks
+.ipynb_checkpoints/
+
+# Terraform files
+.terraform/
+terraform.tfstate
+terraform.tfstate.backup
+terraform.tfvars
+*.tfplan
+
+# Helm and chart lock
+charts/
+*.tgz
+
+# Docker-related
+*.env
+.envrc
+docker-compose.override.yml
+
+# Test & coverage
+.coverage
+htmlcov/
+.cache/
+pytest_cache/
+
+# Misc
+*.bak
+*.swp
