@@ -21,6 +21,9 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
 
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v3
+
     - name: Configure AWS credentials
       uses: aws-actions/configure-aws-credentials@v2
       with:
@@ -29,21 +32,23 @@ jobs:
         aws-region: ${{ env.AWS_REGION }}
 
     - name: Login to Amazon ECR
-      run: |
-        aws ecr get-login-password --region $AWS_REGION | docker login --username AWS --password-stdin $ECR_URI
+      uses: aws-actions/amazon-ecr-login@v2
 
-    - name: Build and Push Docker Image
+    - name: Build and Push Docker Image (ARM64)
       run: |
-        docker build --platform linux/arm64 -t $ECR_URI:$IMAGE_TAG ./serving
-        docker push $ECR_URI:$IMAGE_TAG
+        docker buildx build --platform linux/arm64 \
+          -t $ECR_URI:$IMAGE_TAG \
+          --push ./serving
 
     - name: Update kubeconfig
       run: |
         aws eks update-kubeconfig --region $AWS_REGION --name $EKS_CLUSTER_NAME
 
-    - name:  Deploy with Helm
+    - name: Deploy with Helm
       run: |
         helm upgrade --install webapp ./iac/my-webapp \
           --namespace default \
+          --create-namespace \
           --set image.repository=$ECR_URI \
-          --set image.tag=$IMAGE_TAG
+          --set image.tag=$IMAGE_TAG \
+          --set image.pullPolicy=Always
