@@ -8,7 +8,7 @@ A fully automated, production-ready cloud infrastructure to deploy, monitor, and
 
 ## 📦 Project Structure
 project-root/
-├── iac/                        # Terraform files for infra + Helm app
+├── iac/                       # Terraform files for infra + Helm app
 │   ├── main.tf
 │   ├── variables.tf
 │   ├── outputs.tf
