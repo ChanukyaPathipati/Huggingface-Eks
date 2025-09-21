@@ -118,7 +118,7 @@ Required GitHub Secrets (set these in your repo)
 | `AWS_ACCESS_KEY_ID`     | Your CI/CD IAM user key    |
 | `AWS_SECRET_ACCESS_KEY` | Your CI/CD IAM user secret |
 | `AWS_REGION`            | `eu-west-2`                |
-| `AWS_ACCOUNT_ID`        | `123456789012`             |
+| `AWS_ACCOUNT_ID`        | `12345*******`             |
 | `ECR_REPOSITORY`        | `huggingface-fastapi`      |
 | `EKS_CLUSTER_NAME`      | `huggingface-eks`          |
 
